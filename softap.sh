@@ -20,6 +20,8 @@ iptables --append FORWARD --in-interface $1 -j ACCEPT
 #
 sysctl -w net.ipv4.ip_forward=1
 
-hostapd hostapd.conf 
+#hostapd  hostapd.conf |& awk '{ print "\033[35m", strftime("%m-%d-%Y %H:%M:%S"), "\033[39m", $0 }'
+hostapd -t hostapd.conf
+
 killall dhcpd
 
